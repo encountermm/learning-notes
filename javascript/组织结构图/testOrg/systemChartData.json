@@ -1,0 +1,42 @@
+{
+	"respCode": "0",
+	"ok": true,
+	"message": "",
+	"data": {
+		"id": 1,
+		"name": "固件名称",
+		"children": [{
+			"name": "固件版本名称1",
+			"id": 2,
+			"children": [{
+				"id": 3,
+				"name": "组件名称1",
+				"type": "公有漏洞"
+			}, {
+				"id": 4,
+				"name": "组件名称2",
+				"type": "公有漏洞"
+			}, {
+				"id": 5,
+				"name": "组件名称3",
+				"type": "公有漏洞"
+			}, {
+				"id": 6,
+				"name": "组件名称4",
+				"type": "公有漏洞"
+			}]
+		}, {
+			"name": "固件版本名称2",
+			"id": 7,
+			"children": []
+		}, {
+			"name": "固件版本名称3",
+			"id": 8,
+			"children": []
+		}, {
+			"name": "固件版本名称4",
+			"id": 9,
+			"children": []
+		}]
+	}
+}
