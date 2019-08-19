@@ -96,8 +96,36 @@ Flux 架构衍生的项目:`Redux`、`Mobx`
 	3. 典型场景：性能优化
 - render
 
+# 05  理解Virtual DOM及key属性的作用
+---
+- JSX的运行基础：Virtual DOM
+![Virtual Dom](images/virtualDOM.png)
 
+![广度优先分层比较](images/广度优先分层比较.png)
 
+- 虚拟DOM的两个假设
+	1. 组件的DOM结构是相对稳定的
+	2. 类型相同的兄弟节点可以被唯一标识
 
+ - 小结
+	1. 算法复杂度为O(n)
+	2. 虚拟DOM如何计算diff
+	3. key属性的作用
+
+# 06 组价复用的另外两种形式：高阶组件和函数作为自组件
+---
+- 高阶组件（HOC）
+	1. 高阶组件接受组件作为参数，返回新的组件
+	2. ![高阶组件](images/高阶组件.png)
+- 函数作为子组件
+- 小结
+	1. 高阶组件和函数子组件都是设计模式
+	2. 可以实现更多场景的组件复用
+
+# 07 Context API 的使用场景
+---
+![Context API](images/ContextAPI.png)
+
+![Context API使用](images/ContextAPI使用.png)
 
 
