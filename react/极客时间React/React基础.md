@@ -128,4 +128,16 @@ Flux 架构衍生的项目:`Redux`、`Mobx`
 
 ![Context API使用](images/ContextAPI使用.png)
 
+# 08 使用脚手架工具创建React应用（Create React APP，Codesandbox，Rekit）
+
+# 09 打包和部署
+---
+- 为什么需要打包？
+	1. 编译ES6语法特性，编译JSX
+	2. 整合资源，例如图片，LESS/SASS
+	3. 优化代码体积
+- 打包注意事项
+	1. 设置nodejs环境为production
+	2. 禁用开发时专用代码，如logger
+	3. 设置应用根路径
 
