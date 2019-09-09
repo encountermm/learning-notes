@@ -1,6 +1,6 @@
 # 1. 资源的合并与压缩
 
-# 1.1 http 清求的过程及潜在的性能优化点
+### 1.1 http 清求的过程及潜在的性能优化点
 
 ![输入url到展现的过程](./images/输入url至展现的过程.png)
 
@@ -274,7 +274,7 @@
 2. 用 opacity 替代 visibility
 3. 不要一条-条地修改 DOM 的样式,预先定义好 class ,然后修改 DOM 的 className
 4. 把 DOM 离线后修改,比如:先把 DOM 给 display:none (有一次 Reflow) ,然后你修改 100 次,然后再把它显示出来
-5. 不要把 DOM 结点的属性值放在一一个循环里当成循环里的变量
+5. 不要把 DOM 结点的属性值放在一个循环里当成循环里的变量
 6. 不要使用 table 布局,可能很小的一个小改动会造成整个 table 的重新布局
 7. 动画实现的速度的选择
 8. 对于动画新建图层
@@ -330,7 +330,90 @@
 -   接口封装较好
 -   对于表单信息的维护
 
-### 6.3 IndexedDB
+### 6.3 IndexedDB [MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/IndexedDB_API)
 
--   IndexedDB 是一种低级 API, 用于客户端存储大量结构化数据。该 API 使用索弓来实现对该数据的高性能搜索。虽然 Web Storage 对于存储较少量的数据很有用,但对于存储更大量的结构化数据来说,这种方法不太有用。IndexedDB 提供了一个解决方案。
+-   IndexedDB 是一种低级 API, 用于客户端存储大量结构化数据。该 API 使用索引来实现对该数据的高性能搜索。虽然 Web Storage 对于存储较少量的数据很有用,但对于存储更大量的结构化数据来说,这种方法不太有用。IndexedDB 提供了一个解决方案。
 -   为应用创建离线版本
+
+### 6.4 PWA [MDN](https://developer.mozilla.org/zh-CN/docs/Web/Progressive_web_apps)
+
+PWA (Progressive Web Apps)是一种 Web App 新模型并不是具体指某-种前沿的技术或者某一个单一 -的知识点,我们从英文缩写来看就能看出来,这是一个渐进式的 WebApp ,是通过一系列新的 Web 特性,配合优秀的 UI 交互设计,逐步的增强 Web App 的用户体验。
+
+> PWA 的优点
+
+-   可靠:在没有网络的环境中也能提供基本的页面访问,而不会出现"未连接到互联网”的页面。
+-   快速:针对网页渲染及网络数据访问有较好优化。
+-   融入( Engaging) : 应用可以被增加到手机桌面,并且和普通应用一样有全屏、推送等特性。
+
+> 工具
+
+-   `lighthouse` (谷歌浏览器插件)
+
+### 6.5 Service Workers [MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/Service_Worker_API)
+
+Service Worker 是一个脚本,浏览器独立于当前网页,将其在后台运行,为实现一些不依赖页面或者用户交互的特性打开了一 扇大门。在未来这些特性将包括推送消息， 背景后台同步 geofencing (地理围栏定位) , 但它将推出的第一个首要特性,就是`拦截和处理网络请求的能力`,包括以编程方式来管理被缓存的响应。
+
+> Service Workers 的应用
+
+1. 使用拦截和处理网络请求的能力,去实现一个离线应用
+2. 使用 Service Worker 在后台运行同时能和页面通信的能
+   力,去实现大规模后台数据的处理
+
+![ServiceWorkers生命周期](./images/ServiceWorkers生命周期.png)
+
+# 7. 缓存
+
+## httpheader
+
+### 7.1 Cache-Control [MDN](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Cache-Control)
+
+-   max-age
+-   s-maxage
+-   private
+-   public
+-   no-cache
+-   no-store
+
+### 7.2 Expires
+
+-   缓存过期时间,用来指定资源到期的时间,是服务器端的具体的时间点。
+-   告诉浏览器在过期时间前浏览器可以直接从浏览器缓存取数据,而无需再次请求
+
+### 7.3 Last-Modified/If-Modified-Since
+
+-   基于客户端和服务端协商的缓存机制
+-   last-modified --- response header
+-   if-modified-since --- requestheader
+-   需要与 cache-control 共同使用
+
+> last-modified 缺点
+
+1. 某些服务端不能获取精确的修改时间
+2. 文件修改时间改了,但文件内容却没有变
+
+### 7.5 Etag/If-None-Match
+
+-   文件内容的 hash 值
+-   etag ---- response header
+-   if-none-match ---- request header
+-   需要与 cache-control 共同使用
+
+> 分级缓存策略
+
+![分级缓存策略](./images/分级缓存策略.png)
+
+> 浏览器缓存机制
+
+![浏览器缓存机制](./images/浏览器缓存机制.jpg)
+
+# 8. 服务端性能优化（eg：VUE）
+
+下载 vue.js=>执行 vue.js 代码=>生成 html 页面
+
+> 多层次的优化方案
+
+-   构建层模板编译
+-   数据无关的 prerender 的方式
+-   服务端渲染
+
+![vue-ssr](./images/vue-ssr.png)
