@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>canvas基础知识回顾</title>
+  </head>
+  <body>
+    <canvas width="600" height="600" id="testCanvas"></canvas>
+
+    <!-- js -->
+    <script>
+      /** @type {HTMLCanvasElement} */
+
+      let canvas = document.getElementById('testCanvas')
+      let ctx = canvas.getContext('2d')
+      ctx.moveTo(100, 100)
+      ctx.lineTo(500, 500)
+      ctx.lineTo(500, 100)
+      ctx.lineTo(100, 100)
+      ctx.strokeStyle = 'red'
+      ctx.lineWidth = 5
+      ctx.lineCap = 'round'
+      ctx.lineJoin = 'round'
+      ctx.stroke()
+    </script>
+  </body>
+</html>
