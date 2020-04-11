@@ -142,3 +142,77 @@ function decode(str) {
   return decodeURIComponent(atob(str))
 }
 ```
+
+## 9. 写一个判断数据类型的方法
+
+```js
+// 安全监测js基本数据类型和内置对象
+// 参数：o表示检测的值
+// 返回值：返回字符串"undefined"、"number"、"boolean"、"string"、"function"、"regexp"、"array"、"date"、"error"、"object"、"null"
+function typeOf(o) {
+  var _toString = Object.prototype.toString
+  var _type = {
+    undefined: 'undefined',
+    number: 'number',
+    boolean: 'boolean',
+    string: 'string',
+    '[object Function]': 'function',
+    '[object RegExp]': 'regexp',
+    '[object Date]': 'date',
+    '[object Error]': 'error'
+  }
+  return _type[typeof 0] || _type[_toString.call(o)] || (o ? 'object' : 'null')
+}
+```
+
+## 10. 简要描述下什么是回调函数，并写出一个例子来。
+
+> 回调是把一个函数作为参数传递给另一个函数，当该函数满足某个条件时触发该函数参数。
+> 主要用于异步操作，例如网络请求，防止页面同步代码阻塞导致渲染进程停止。
+
+```js
+// 例子
+function longTask(callback, timeout) {
+  setTimeout(callback, timeout)
+}
+longTask(() => {
+  console.log('回调任务被执行了')
+}, 3000)
+console.log('我是同步代码，不会阻塞我')
+```
+
+## 11. 简要描述下 js 有哪些内置的对象？
+
+- Date
+- String
+- Math
+- Number
+- Array
+- Function
+- 函数参数集合 arguments
+- 布尔对象 Boolean
+- 错误对象 Error
+- 基础对象 Object
+
+## 12. 写一个获取当前 url 查询字符串中的参数的方法
+
+```js
+function params() {
+  const search = window.location.search
+  search = search.substr(1, search.length)
+  const res = {}
+  if (!search) return res
+  search.split('&').map((item) => {
+    const [key, value] = item.split('=')
+    res[key] = decodeURIComponent(value)
+  })
+  return res
+}
+```
+
+## 13. 说说你对 js 作用域的理解？
+
+- 全局作用域
+- 局部作用域
+  - 函数作用域（函数内）
+  - 块级作用域（es6）
