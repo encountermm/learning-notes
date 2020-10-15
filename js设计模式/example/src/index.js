@@ -1,11 +1,21 @@
-class Person {
-  constructor(name) {
-    this.name = name
+function log(target, name, descriptor) {
+  console.log(descriptor)
+  var oldValue = descriptor.value
+
+  descriptor.value = function () {
+    console.log(`Calling ${name} with `, arguments)
+    return oldValue.apply(this, arguments)
   }
-  getName() {
-    return this.name
+  return descriptor
+}
+
+class Math {
+  @log
+  add(a, b) {
+    return a + b
   }
 }
-const person1 = new Person('kimi')
 
-console.log(person1.getName())
+const math = new Math()
+const result = math.add(2, 4)
+console.log('result', result)
