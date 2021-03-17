@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      #box {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      #map {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        background: gray;
+        transform: scale(1);
+        transform-origin: 0 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box">
+      <div id="map"></div>
+    </div>
+  </body>
+  <script>
+    var box = document.getElementById('box')
+    var map = document.getElementById('map')
+    var isRun, // 是否可移动
+      startX, // 鼠标落下的位置
+      startY,
+      endX, // 鼠标放开的位置
+      endY,
+      rX, // 图片最终的位置（中间量）
+      rY,
+      scaleSize = 1, // 缩放比例
+      bgX = 0, // left   图片的最终位置
+      bgY = 0 // top
+    var box_width = box.offsetWidth
+    var box_height = box.offsetHeight
+    var map_width = map.offsetWidth
+    var map_height = map.offsetHeight
+
+    box.onmousedown = function (ev) {
+      if (ev.which === 1) {
+        // 鼠标左键
+        isRun = true
+        startX = ev.pageX
+        startY = ev.pageY
+        return false
+      }
+    }
+    box.onmouseup = function (ev) {
+      if (ev.which === 1) {
+        isRun = false
+        bgX = rX
+        bgY = rY
+      }
+      return false
+    }
+    box.onmousemove = function (ev) {
+      if (ev.which === 1 && isRun) {
+        endX = ev.pageX
+        endY = ev.pageY
+        rX = bgX + endX - startX
+        rY = bgY + endY - startY
+        map.style.left = rX + 'px'
+        map.style.top = rY + 'px'
+      }
+    }
+    box.onwheel = function (ev) {
+      // 以鼠标为中心缩放
+      // 1.记录鼠标当前位置（相对于window）
+      var x = ev.pageX
+      var y = ev.pageY
+      // 2.阻止默认事件
+      ev.preventDefault()
+      // 3.计算出鼠标相对于地图的位置
+      x = x - box.offsetLeft
+      y = y - box.offsetTop
+      // 4.记录滚轮的变化值 -100/+100
+      var change_scale = -ev.deltaY / 1000
+      var current_scale = scaleSize
+      current_scale += change_scale
+      // 5.限制缩放的倍数0.1-10
+      current_scale =
+        current_scale < 0.1 ? 0.1 : current_scale > 10 ? 10 : current_scale
+
+      // 6.计算出相对于图片的同样倍数对应的位移距离
+      bgX = bgX - ((x - bgX) * (current_scale - scaleSize)) / scaleSize
+      bgY = bgY - ((y - bgY) * (current_scale - scaleSize)) / scaleSize
+      scaleSize = current_scale
+
+      // 7.更新属性
+      map.style.transform = `scale(${scaleSize})`
+      map.style.top = bgY + 'px'
+      map.style.left = bgX + 'px'
+      // 注意：要求box标签的父级标签不能出现定位属性，否则会以出现定位属性的父级为基准计算offset
+    }
+  </script>
+</html>
