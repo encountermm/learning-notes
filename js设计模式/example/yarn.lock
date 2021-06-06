@@ -333,8 +333,8 @@ async-each@^1.0.1:
 
 async-limiter@~1.0.0:
   version "1.0.1"
-  resolved "https://r.cnpmjs.org/async-limiter/download/async-limiter-1.0.1.tgz#dd379e94f0db8310b08291f9d64c3209766617fd"
-  integrity sha1-3TeelPDbgxCwgpH51kwyCXZmF/0=
+  resolved "https://registry.yarnpkg.com/async-limiter/-/async-limiter-1.0.1.tgz#dd379e94f0db8310b08291f9d64c3209766617fd"
+  integrity sha512-csOlWGAcRFJaI6m+F2WKdnMKr4HhdhFVBk0H/QbJFMCr+uO2kwohwXQPxw/9OCxp05r5ghVBFSyioixx3gfkNQ==
 
 async@^2.6.2:
   version "2.6.3"
@@ -537,6 +537,11 @@ babel-plugin-syntax-async-functions@^6.8.0:
   resolved "https://r.cnpmjs.org/babel-plugin-syntax-async-functions/download/babel-plugin-syntax-async-functions-6.13.0.tgz#cad9cad1191b5ad634bf30ae0872391e0647be95"
   integrity sha1-ytnK0RkbWtY0vzCuCHI5HgZHvpU=
 
+babel-plugin-syntax-decorators@^6.1.18:
+  version "6.13.0"
+  resolved "https://registry.yarnpkg.com/babel-plugin-syntax-decorators/-/babel-plugin-syntax-decorators-6.13.0.tgz#312563b4dbde3cc806cee3e416cceeaddd11ac0b"
+  integrity sha1-MSVjtNvePMgGzuPkFszurd0RrAs=
+
 babel-plugin-syntax-exponentiation-operator@^6.8.0:
   version "6.13.0"
   resolved "https://r.cnpmjs.org/babel-plugin-syntax-exponentiation-operator/download/babel-plugin-syntax-exponentiation-operator-6.13.0.tgz#9ee7e8337290da95288201a6a57f4170317830de"
@@ -555,6 +560,15 @@ babel-plugin-transform-async-to-generator@^6.24.1:
     babel-helper-remap-async-to-generator "^6.24.1"
     babel-plugin-syntax-async-functions "^6.8.0"
     babel-runtime "^6.22.0"
+
+babel-plugin-transform-decorators-legacy@^1.3.5:
+  version "1.3.5"
+  resolved "https://registry.yarnpkg.com/babel-plugin-transform-decorators-legacy/-/babel-plugin-transform-decorators-legacy-1.3.5.tgz#0e492dffa0edd70529072887f8aa86d4dd8b40a1"
+  integrity sha512-jYHwjzRXRelYQ1uGm353zNzf3QmtdCfvJbuYTZ4gKveK7M9H1fs3a5AKdY1JUDl0z97E30ukORW1dzhWvsabtA==
+  dependencies:
+    babel-plugin-syntax-decorators "^6.1.18"
+    babel-runtime "^6.2.0"
+    babel-template "^6.3.0"
 
 babel-plugin-transform-es2015-arrow-functions@^6.22.0:
   version "6.22.0"
@@ -846,7 +860,7 @@ babel-register@^6.26.0:
     mkdirp "^0.5.1"
     source-map-support "^0.4.15"
 
-babel-runtime@^6.18.0, babel-runtime@^6.22.0, babel-runtime@^6.26.0:
+babel-runtime@^6.18.0, babel-runtime@^6.2.0, babel-runtime@^6.22.0, babel-runtime@^6.26.0:
   version "6.26.0"
   resolved "https://r.cnpmjs.org/babel-runtime/download/babel-runtime-6.26.0.tgz#965c7058668e82b55d7bfe04ff2337bc8b5647fe"
   integrity sha1-llxwWGaOgrVde/4E/yM3vItWR/4=
@@ -854,7 +868,7 @@ babel-runtime@^6.18.0, babel-runtime@^6.22.0, babel-runtime@^6.26.0:
     core-js "^2.4.0"
     regenerator-runtime "^0.11.0"
 
-babel-template@^6.24.1, babel-template@^6.26.0:
+babel-template@^6.24.1, babel-template@^6.26.0, babel-template@^6.3.0:
   version "6.26.0"
   resolved "https://r.cnpmjs.org/babel-template/download/babel-template-6.26.0.tgz#de03e2d16396b069f46dd9fff8521fb1a0e35e02"
   integrity sha1-3gPi0WOWsGn0bdn/+FIfsaDjXgI=
@@ -4866,9 +4880,9 @@ wrappy@1:
   integrity sha1-tSQ9jz7BqjXxNkYFvA0QNuMKtp8=
 
 ws@^6.2.1:
-  version "6.2.1"
-  resolved "https://r.cnpmjs.org/ws/download/ws-6.2.1.tgz#442fdf0a47ed64f59b6a5d8ff130f4748ed524fb"
-  integrity sha1-RC/fCkftZPWbal2P8TD0dI7VJPs=
+  version "6.2.2"
+  resolved "https://registry.yarnpkg.com/ws/-/ws-6.2.2.tgz#dd5cdbd57a9979916097652d78f1cc5faea0c32e"
+  integrity sha512-zmhltoSR8u1cnDsD43TX59mzoMZsLKqUweyYBAIvTngR3shc0W6aOZylZmq/7hqyVxPdi+5Ud2QInblgyE72fw==
   dependencies:
     async-limiter "~1.0.0"
 
